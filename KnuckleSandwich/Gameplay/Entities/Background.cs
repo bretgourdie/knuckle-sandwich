@@ -1,13 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Nez;
-using KnuckleSandwich.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nez.Sprites;
+﻿using KnuckleSandwich.Shared;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Nez;
+using Nez.Sprites;
 
 namespace KnuckleSandwich.Gameplay.Entities
 {
