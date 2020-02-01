@@ -48,6 +48,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContentPathGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Gameplay\Components\FighterStates\Crouch.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\CrouchAttack.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\Dead.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\Hurt.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\JumpAttack.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\NeutralAttack.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\Idle.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\FighterState.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\Jump.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\Walk.cs" />
     <Compile Include="Gameplay\Components\JumpComponent.cs" />
     <Compile Include="Gameplay\Components\SpritePointing.cs" />
     <Compile Include="Gameplay\Entities\Background.cs" />
