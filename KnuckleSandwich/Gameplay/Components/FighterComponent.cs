@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nez;
 
-namespace KnuckleSandwich.Shared.Components
+namespace KnuckleSandwich.Gameplay.Components
 {
     class FighterComponent : Component
     {
