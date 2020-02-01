@@ -14,8 +14,8 @@ namespace KnuckleSandwich.Gameplay.Components
 {
     class FighterComponent : Component
     {
-        public VirtualIntegerAxis XAxisInput { get; private set; }
-        public VirtualIntegerAxis YAxisInput { get; private set; }
+        public VirtualAxis XAxisInput { get; private set; }
+        public VirtualAxis YAxisInput { get; private set; }
         public VirtualButton AttackInput { get; private set; }
 
         private readonly PlayerIndex _playerIndex;
@@ -34,19 +34,36 @@ namespace KnuckleSandwich.Gameplay.Components
         {
             base.OnAddedToEntity();
 
-            var idleSprite = new SpriteRenderer(_breadTexture);
-            Entity.AddComponent(idleSprite);
-
             Entity.AddComponent(new CircleCollider(_breadTexture.Bounds.Height / 2));
 
             Entity.AddComponent(new Mover());
 
             Entity.AddComponent(new JumpComponent());
 
+            var sprite = _handleState();
+
+            _handleInput();
+
+            _handlePosition(sprite);
+        }
+
+        private SpriteRenderer _handleState()
+        {
+            var idleSprite = new SpriteRenderer(_breadTexture);
+            Entity.AddComponent(idleSprite);
+
+            return idleSprite;
+        }
+
+        private void _handlePosition(SpriteRenderer idleSprite)
+        {
             var xProportion = _playerIndex == PlayerIndex.One ? 1 : 5;
             var y = Constants.FighterOnFloor(idleSprite);
             Entity.Position = new Vector2(Screen.Width * xProportion / 6, y);
+        }
 
+        private void _handleInput()
+        {
             var negativeXKeyboardKey = _playerIndex == PlayerIndex.One ?
                 Keys.A :
                 Keys.Left;
@@ -54,8 +71,7 @@ namespace KnuckleSandwich.Gameplay.Components
                 Keys.D :
                 Keys.Right;
 
-            XAxisInput = new VirtualIntegerAxis(
-
+            XAxisInput = new VirtualAxis(
                 new VirtualAxis.KeyboardKeys(
                     VirtualInput.OverlapBehavior.TakeNewer,
                     negativeXKeyboardKey,
@@ -68,8 +84,7 @@ namespace KnuckleSandwich.Gameplay.Components
             var positiveYKeyboardKey = _playerIndex == PlayerIndex.One ?
                 Keys.W :
                 Keys.Up;
-            YAxisInput = new VirtualIntegerAxis(
-
+            YAxisInput = new VirtualAxis(
                 new VirtualAxis.KeyboardKeys(
                     VirtualInput.OverlapBehavior.TakeNewer,
                     negativeYKeyboardKey,
@@ -79,20 +94,37 @@ namespace KnuckleSandwich.Gameplay.Components
             var keyboardAttackButton = _playerIndex == PlayerIndex.One ?
                 Keys.LeftShift :
                 Keys.RightControl;
-            AttackInput = new VirtualButton(
-                //new VirtualButton.GamePadButton((int)playerIndex, Buttons.X),
-                new VirtualButton.KeyboardKey(keyboardAttackButton)
-            );
+
+            var listOfAttackButtons = new List<VirtualButton.Node>();
+
+            var gamePadAttackButton = _getGamePadXButton(_playerIndex);
+            if (gamePadAttackButton != null)
+            {
+                listOfAttackButtons.Add(gamePadAttackButton);
+            }
+            listOfAttackButtons.Add(new VirtualButton.KeyboardKey(keyboardAttackButton));
+
+            AttackInput = new VirtualButton(listOfAttackButtons.ToArray());
         }
 
-        private bool _canReturnTwoGamePads()
+        private bool _isGamePadConnected(PlayerIndex playerIndex)
         {
-            return GamePad.MaximumGamePadCount >= 2;
+            var gamePadState = GamePad.GetState((int)playerIndex);
+            return gamePadState.IsConnected;
+        }
+
+        private VirtualButton.Node _getGamePadXButton(PlayerIndex playerIndex)
+        {
+            if (_isGamePadConnected(playerIndex))
+            {
+                return new VirtualButton.GamePadButton((int)playerIndex, Buttons.X);
+            }
+            return null;
         }
 
         private VirtualAxis.Node[] _getGamePadXAxis(PlayerIndex playerIndex)
         {
-            if (_canReturnTwoGamePads())
+            if (_isGamePadConnected(playerIndex))
             {
                 return new VirtualAxis.Node[]
                 {
@@ -109,7 +141,7 @@ namespace KnuckleSandwich.Gameplay.Components
 
         private VirtualAxis.Node[] _getGamePadYAxis(PlayerIndex playerIndex)
         {
-            if (_canReturnTwoGamePads())
+            if (_isGamePadConnected(playerIndex))
             {
                 return new VirtualAxis.Node[]
                 {
