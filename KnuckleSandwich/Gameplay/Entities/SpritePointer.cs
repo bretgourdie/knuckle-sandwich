@@ -1,10 +1,7 @@
 ﻿using KnuckleSandwich.Gameplay.Components;
+using KnuckleSandwich.Shared;
+using Microsoft.Xna.Framework;
 using Nez;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KnuckleSandwich.Gameplay.Entities
 {
@@ -13,6 +10,9 @@ namespace KnuckleSandwich.Gameplay.Entities
         public SpritePointer()
         {
             AddComponent(new SpritePointing());
+            Position = new Vector2(
+                Constants.Width / 2,
+                Constants.Height / 2);
         }
     }
 }
