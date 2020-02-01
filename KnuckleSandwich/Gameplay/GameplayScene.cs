@@ -1,5 +1,6 @@
 ﻿using KnuckleSandwich.Gameplay.Entities;
 using KnuckleSandwich.Gameplay.Systems;
+using KnuckleSandwich.Gameplay.Systems.FighterStateSystems;
 using KnuckleSandwich.Shared.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -44,7 +45,8 @@ namespace KnuckleSandwich.Gameplay
             {
                 new MovementSystem(),
                 new JumpSystem(),
-                new FacingSystem(spritePointer, player1, player2)
+                new FacingSystem(spritePointer, player1, player2),
+                new IdleSystem()
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));

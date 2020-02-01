@@ -1,30 +1,29 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
-using System;
 
 namespace KnuckleSandwich.Gameplay.Components.FighterStates
 {
     abstract class FighterState : Component
     {
-        private SpriteRenderer _sprite;
+        public SpriteRenderer Sprite;
         protected abstract SpriteRenderer loadSprite();
         public float TimeSpentInState;
 
         public FighterState()
         {
-            _sprite = loadSprite();
+            Sprite = loadSprite();
         }
 
         public override void OnAddedToEntity()
         {
-            this.AddComponent(_sprite);
+            this.AddComponent(Sprite);
             TimeSpentInState = 0;
         }
 
         public override void OnRemovedFromEntity()
         {
-            this.RemoveComponent(_sprite);
+            this.RemoveComponent(Sprite);
         }
 
         protected SpriteRenderer loadSprite(string texture2DPath)

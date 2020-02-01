@@ -12,8 +12,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
     {
         const float stunTime = 0.25f;
 
-        public HurtSystem(IDictionary<Type, FighterState> states) : base(
-            states, typeof(Hurt))
+        public HurtSystem() : base(typeof(Hurt))
         { }
 
         public override void Process(Entity entity)
@@ -23,7 +22,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             if (fc.TimeSpentInState > stunTime)
             {
                 entity.RemoveComponent<Hurt>();
-                entity.AddComponent(getState<Idle>());
+                addState<Idle>(entity);
             }
         }
     }

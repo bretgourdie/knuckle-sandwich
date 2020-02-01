@@ -12,9 +12,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
     {
         const float attackTime = 0.35f;
 
-        public CrouchAttackSystem(IDictionary<Type, FighterState> states) : base(
-            states,
-            typeof(CrouchAttackSystem))
+        public CrouchAttackSystem() : base(typeof(CrouchAttackSystem))
         { }
 
         public override void Process(Entity entity)
@@ -31,32 +29,32 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
                     if (isTryingToDown(yInput))
                     {
                         entity.RemoveComponent<CrouchAttack>();
-                        entity.AddComponent(getState<CrouchAttack>());
+                        addState<CrouchAttack>(entity);
                     }
 
                     else if (inIdleYDeadZone(yInput))
                     {
                         entity.RemoveComponent<CrouchAttack>();
-                        entity.AddComponent(getState<NeutralAttack>());
+                        addState<NeutralAttack>(entity);
                     }
                 }
 
                 if (isTryingToUp(yInput))
                 {
                     entity.RemoveComponent<CrouchAttack>();
-                    entity.AddComponent(getState<Jump>());
+                    addState<CrouchAttack>(entity);
                 }
 
                 else if (isTryingToDown(yInput))
                 {
                     entity.RemoveComponent<CrouchAttack>();
-                    entity.AddComponent(getState<Crouch>());
+                    addState<Crouch>(entity);
                 }
 
                 else
                 {
                     entity.RemoveComponent<Crouch>();
-                    entity.AddComponent(getState<Idle>());
+                    addState<Idle>(entity);
                 }
             }
         }

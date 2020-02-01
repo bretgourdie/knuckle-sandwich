@@ -12,8 +12,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
     {
         const float attackTime = 0.75f;
 
-        public JumpAttackSystem(IDictionary<Type, FighterState> states) : base(
-            states, typeof(JumpAttack))
+        public JumpAttackSystem() : base(typeof(JumpAttack))
         { }
 
         public override void Process(Entity entity)
@@ -22,7 +21,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             if (fc.TimeSpentInState > attackTime)
             {
                 entity.RemoveComponent<JumpAttack>();
-                entity.AddComponent(getState<Jump>());
+                addState<Jump>(entity);
             }
         }
     }

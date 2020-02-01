@@ -1,10 +1,4 @@
-﻿using Nez;
-using Nez.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nez.Sprites;
 
 namespace KnuckleSandwich.Shared
 {
@@ -14,6 +8,8 @@ namespace KnuckleSandwich.Shared
         public const int Width = 800;
         public static readonly float Floor = Height - 80;
         public static float FighterOnFloor(SpriteRenderer sprite)
-            => Height - 80 - sprite.Height / 2;
+            => FighterOnFloor(sprite.Height);
+        public static float FighterOnFloor(float height)
+            => Height - 80 - height / 2;
     }
 }

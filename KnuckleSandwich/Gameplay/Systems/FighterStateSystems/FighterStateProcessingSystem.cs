@@ -1,33 +1,15 @@
 ﻿using KnuckleSandwich.Gameplay.Components;
-using KnuckleSandwich.Gameplay.Components.FighterStates;
 using Nez;
 using System;
-using System.Collections.Generic;
 
 namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 {
     abstract class FighterStateProcessingSystem : EntityProcessingSystem
     {
-        private readonly IDictionary<Type, FighterState> _states;
-
         public FighterStateProcessingSystem(
-            IDictionary<Type, FighterState> states,
             params Type[] types) : base(
             new Matcher().All(types).All(typeof(FighterComponent)))
-        {
-            _states = states;
-        }
-
-        protected FighterState getState<T>() where T : FighterState
-        {
-            var type = typeof(T);
-            if (_states.ContainsKey(type))
-            {
-                return _states[type];
-            }
-
-            throw new NotImplementedException();
-        }
+        { }
 
         protected VirtualAxis xAxis(Entity entity)
         {
@@ -83,6 +65,23 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
         protected bool isTryingToAttack(VirtualButton attackButton)
         {
             return attackButton.IsPressed;
+        }
+
+        protected void addState<T>(Entity entity)
+        {
+            var fc = entity.GetComponent<FighterComponent>();
+
+            var states = fc.States;
+
+            if (states.ContainsKey(typeof(T)))
+            {
+                entity.AddComponent(states[typeof(T)]);
+            }
+
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

@@ -35,7 +35,8 @@ namespace KnuckleSandwich.Gameplay.Systems
             if (fighterComponent != null)
             {
                 var sprite = entity.GetComponent<SpriteRenderer>();
-                sprite.FlipX = _spritePointer.Position.X < entity.Position.X;
+                if (sprite != null)
+                    sprite.FlipX = _spritePointer.Position.X < entity.Position.X;
             }
 
             if (entity.GetComponent<SpritePointing>() != null)

@@ -10,8 +10,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 {
     class IdleSystem : FighterStateProcessingSystem
     {
-        public IdleSystem(IDictionary<Type, FighterState> states) :
-            base(states, typeof(Idle))
+        public IdleSystem() : base(typeof(Idle))
         { }
 
         public override void Process(Entity entity)
@@ -22,25 +21,25 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             if (isTryingToAttack(attackButton(entity)))
             {
                 entity.RemoveComponent<Idle>();
-                entity.AddComponent(getState<NeutralAttack>());
+                addState<NeutralAttack>(entity);
             }
 
             else if (isTryingToUp(yInput))
             {
                 entity.RemoveComponent<Idle>();
-                entity.AddComponent(getState<Jump>());
+                addState<Jump>(entity);
             }
 
             else if (isTryingToDown(yInput))
             {
                 entity.RemoveComponent<Idle>();
-                entity.AddComponent(getState<Crouch>());
+                addState<Crouch>(entity);
             }
 
             else if (isTryingToLeft(xInput) || isTryingToRight(xInput))
             {
                 entity.RemoveComponent<Idle>();
-                entity.AddComponent(getState<Walk>());
+                addState<Walk>(entity);
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KnuckleSandwich.Gameplay.Components.FighterStates;
 using KnuckleSandwich.Shared;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,6 +19,8 @@ namespace KnuckleSandwich.Gameplay.Components
         public VirtualAxis YAxisInput { get; private set; }
         public VirtualButton AttackInput { get; private set; }
 
+        public IDictionary<Type, FighterState> States;
+
         private readonly PlayerIndex _playerIndex;
         private readonly Texture2D _breadTexture;
 
@@ -28,6 +31,7 @@ namespace KnuckleSandwich.Gameplay.Components
         {
             _playerIndex = playerIndex;
             _breadTexture = breadTexture;
+            States = new Dictionary<Type, FighterState>();
         }
 
         public override void OnAddedToEntity()
@@ -40,25 +44,40 @@ namespace KnuckleSandwich.Gameplay.Components
 
             Entity.AddComponent(new JumpComponent());
 
-            var sprite = _handleState();
+            _handleStates();
 
             _handleInput();
 
-            _handlePosition(sprite);
+            _handlePosition();
         }
 
-        private SpriteRenderer _handleState()
+        private void _handleStates()
         {
-            var idleSprite = new SpriteRenderer(_breadTexture);
-            Entity.AddComponent(idleSprite);
+            var idle = new Idle();
 
-            return idleSprite;
+            addState<AirbornMovement>(new AirbornMovement());
+            addState<Crouch>(new Crouch());
+            addState<Dead>(new Dead());
+            addState<Hurt>(new Hurt());
+            addState<Idle>(idle);
+            addState<Jump>(new Jump());
+            addState<JumpAttack>(new JumpAttack());
+            addState<NeutralAttack>(new NeutralAttack());
+            addState<Walk>(new Walk());
+
+            Entity.AddComponent(idle);
         }
 
-        private void _handlePosition(SpriteRenderer idleSprite)
+        private void addState<T>(FighterState fighterState)
+        {
+            States[typeof(T)] = fighterState;
+        }
+
+        private void _handlePosition()
         {
             var xProportion = _playerIndex == PlayerIndex.One ? 1 : 5;
-            var y = Constants.FighterOnFloor(idleSprite);
+            var idleState = States[typeof(Idle)];
+            var y = Constants.FighterOnFloor(150f);
             Entity.Position = new Vector2(Screen.Width * xProportion / 6, y);
         }
 

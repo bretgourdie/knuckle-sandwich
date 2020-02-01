@@ -11,8 +11,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 {
     class CrouchSystem : FighterStateProcessingSystem
     {
-        public CrouchSystem(IDictionary<Type, FighterState> states)
-            : base(states, typeof(Crouch)) { }
+        public CrouchSystem() : base(typeof(Crouch)) { }
 
         public override void Process(Entity entity)
         {
@@ -21,19 +20,19 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             if (attackButton(entity).IsPressed)
             {
                 entity.RemoveComponent<Crouch>();
-                entity.AddComponent(getState<CrouchAttack>());
+                addState<CrouchAttack>(entity);
             }
 
             else if (isTryingToDown(yAxis))
             {
                 entity.RemoveComponent<Crouch>();
-                entity.AddComponent(getState<Idle>());
+                addState<Idle>(entity);
             }
 
             else if (isTryingToUp(yAxis))
             {
                 entity.RemoveComponent<Crouch>();
-                entity.AddComponent(getState<Jump>());
+                addState<Jump>(entity);
             }
         }
     }
