@@ -43,8 +43,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Gameplay\Components\JumpComponent.cs" />
     <Compile Include="Gameplay\Entities\Background.cs" />
     <Compile Include="Gameplay\Components\FighterComponent.cs" />
+    <Compile Include="Gameplay\Systems\JumpSystem.cs" />
     <Compile Include="Gameplay\Systems\MovementSystem.cs" />
     <Compile Include="Shared\Constants.cs" />
     <Compile Include="Shared\SharedPlaceholder.cs" />

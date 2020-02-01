@@ -17,7 +17,8 @@ namespace KnuckleSandwich.Gameplay.Systems
             new Matcher()
             .All(
                 typeof(FighterComponent),
-                typeof(Mover)
+                typeof(Mover),
+                typeof(JumpComponent)
             )
         )
         { }
@@ -25,14 +26,15 @@ namespace KnuckleSandwich.Gameplay.Systems
         public override void Process(Entity entity)
         {
             var fighterComponent = entity.GetComponent<FighterComponent>();
-            var mover = entity.GetComponent<Mover>();
 
-            var leftRightMovement = new Vector2(
-                fighterComponent.XAxisInput,
-                0);
-
-            if (leftRightMovement != Vector2.Zero)
+            if (fighterComponent.XAxisInput != Vector2.Zero.X)
             {
+                var mover = entity.GetComponent<Mover>();
+
+                var leftRightMovement = new Vector2(
+                    fighterComponent.XAxisInput,
+                    0);
+
                 var movement = leftRightMovement * _moveSpeed * Time.DeltaTime;
 
                 mover.CalculateMovement(ref movement, out var res);

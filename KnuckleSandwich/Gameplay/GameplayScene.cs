@@ -37,7 +37,8 @@ namespace KnuckleSandwich.Gameplay
 
             var systems = new EntitySystem[]
             {
-                new MovementSystem()
+                new MovementSystem(),
+                new JumpSystem()
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));

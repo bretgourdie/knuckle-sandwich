@@ -41,8 +41,10 @@ namespace KnuckleSandwich.Gameplay.Components
 
             Entity.AddComponent(new Mover());
 
+            Entity.AddComponent(new JumpComponent());
+
             var xProportion = _playerIndex == PlayerIndex.One ? 1 : 5;
-            var y = Constants.Floor - idleSprite.Height / 2;
+            var y = Constants.FighterOnFloor(idleSprite);
             Entity.Position = new Vector2(Screen.Width * xProportion / 6, y);
 
             var negativeXKeyboardKey = _playerIndex == PlayerIndex.One ?
@@ -53,8 +55,7 @@ namespace KnuckleSandwich.Gameplay.Components
                 Keys.Right;
 
             XAxisInput = new VirtualIntegerAxis(
-                //new VirtualAxis.GamePadDpadLeftRight((int)playerIndex),
-                //new VirtualAxis.GamePadLeftStickX((int)playerIndex),
+
                 new VirtualAxis.KeyboardKeys(
                     VirtualInput.OverlapBehavior.TakeNewer,
                     negativeXKeyboardKey,
@@ -68,8 +69,7 @@ namespace KnuckleSandwich.Gameplay.Components
                 Keys.W :
                 Keys.Up;
             YAxisInput = new VirtualIntegerAxis(
-                //new VirtualAxis.GamePadDpadUpDown((int)playerIndex),
-                //new VirtualAxis.GamePadLeftStickY((int)playerIndex),
+
                 new VirtualAxis.KeyboardKeys(
                     VirtualInput.OverlapBehavior.TakeNewer,
                     negativeYKeyboardKey,
@@ -83,6 +83,45 @@ namespace KnuckleSandwich.Gameplay.Components
                 //new VirtualButton.GamePadButton((int)playerIndex, Buttons.X),
                 new VirtualButton.KeyboardKey(keyboardAttackButton)
             );
+        }
+
+        private bool _canReturnTwoGamePads()
+        {
+            return GamePad.MaximumGamePadCount >= 2;
+        }
+
+        private VirtualAxis.Node[] _getGamePadXAxis(PlayerIndex playerIndex)
+        {
+            if (_canReturnTwoGamePads())
+            {
+                return new VirtualAxis.Node[]
+                {
+                    new VirtualAxis.GamePadDpadLeftRight((int)playerIndex),
+                    new VirtualAxis.GamePadLeftStickX((int)playerIndex)
+                };
+            }
+
+            else
+            {
+                return new VirtualAxis.Node[] { };
+            }
+        }
+
+        private VirtualAxis.Node[] _getGamePadYAxis(PlayerIndex playerIndex)
+        {
+            if (_canReturnTwoGamePads())
+            {
+                return new VirtualAxis.Node[]
+                {
+                    new VirtualAxis.GamePadDpadUpDown((int)playerIndex),
+                    new VirtualAxis.GamePadLeftStickY((int)playerIndex)
+                };
+            }
+
+            else
+            {
+                return new VirtualAxis.Node[] { };
+            }
         }
     }
 }
