@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Nez;
 
-namespace KnuckleSandwich.Core.Entities
+namespace KnuckleSandwich.Shared.Entities
 {
     class WhiteBread : Entity
     {

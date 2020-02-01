@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Nez;
 
-namespace KnuckleSandwich.Core.Components
+namespace KnuckleSandwich.Shared.Components
 {
     class FighterComponent : Component
     {

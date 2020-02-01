@@ -43,9 +43,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Core\Components\FighterComponent.cs" />
-    <Compile Include="Core\CorePlaceholder.cs" />
-    <Compile Include="Core\Entities\WhiteBread.cs" />
+    <Compile Include="Shared\Components\FighterComponent.cs" />
+    <Compile Include="Shared\SharedPlaceholder.cs" />
+    <Compile Include="Shared\Entities\WhiteBread.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Gameplay\GameplayPlaceholder.cs" />
     <Compile Include="Gameplay\GameplayScene.cs" />

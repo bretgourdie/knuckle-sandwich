@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KnuckleSandwich.Core
+namespace KnuckleSandwich.Shared
 {
-    class CorePlaceholder
+    class SharedPlaceholder
     {
     }
 }
