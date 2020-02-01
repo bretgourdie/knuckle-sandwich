@@ -11,7 +11,7 @@ namespace KnuckleSandwich.Gameplay.Systems
 {
     class MovementSystem : EntityProcessingSystem
     {
-        const float _moveSpeed = 150f;
+        const float _moveSpeed = 350f;
 
         public MovementSystem() : base(
             new Matcher()
