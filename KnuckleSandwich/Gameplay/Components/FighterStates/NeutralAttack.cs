@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KnuckleSandwich.Gameplay.Components.FighterStates
 {
-    class Attack
+    class NeutralAttack
     {
     }
 }
