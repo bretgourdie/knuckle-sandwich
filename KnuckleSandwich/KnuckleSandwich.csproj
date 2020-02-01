@@ -44,8 +44,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Gameplay\Components\JumpComponent.cs" />
+    <Compile Include="Gameplay\Components\SpritePointing.cs" />
     <Compile Include="Gameplay\Entities\Background.cs" />
     <Compile Include="Gameplay\Components\FighterComponent.cs" />
+    <Compile Include="Gameplay\Entities\SpritePointer.cs" />
+    <Compile Include="Gameplay\Systems\FacingSystem.cs" />
     <Compile Include="Gameplay\Systems\JumpSystem.cs" />
     <Compile Include="Gameplay\Systems\MovementSystem.cs" />
     <Compile Include="Shared\Constants.cs" />

@@ -26,10 +26,15 @@ namespace KnuckleSandwich.Gameplay
 
         public override void OnStart()
         {
+            var player1 = new WhiteBread(_breadTexture, PlayerIndex.One);
+            var player2 = new WhiteBread(_breadTexture, PlayerIndex.Two);
+            var spritePointer = new SpritePointer();
+
             var entities = new Entity[]
             {
-                new WhiteBread(_breadTexture, PlayerIndex.One),
-                new WhiteBread(_breadTexture, PlayerIndex.Two),
+                player1,
+                player2,
+                spritePointer,
                 new Background(_backgroundTexture)
             };
 
@@ -38,7 +43,8 @@ namespace KnuckleSandwich.Gameplay
             var systems = new EntitySystem[]
             {
                 new MovementSystem(),
-                new JumpSystem()
+                new JumpSystem(),
+                new FacingSystem(spritePointer, player1, player2)
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));
