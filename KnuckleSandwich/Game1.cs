@@ -20,8 +20,11 @@ namespace KnuckleSandwich
 
         protected override void Initialize()
         {
+            base.Initialize();
+
             var gameplayScene = new GameplayScene();
-            Scene = gameplayScene;
+
+            Core.Scene = gameplayScene;
         }
     }
 }
