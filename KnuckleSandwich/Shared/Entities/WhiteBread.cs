@@ -17,14 +17,7 @@ namespace KnuckleSandwich.Shared.Entities
             Texture2D breadTexture,
             PlayerIndex playerIndex)
         {
-            AddComponent(new FighterComponent(playerIndex));
-
-            var sprite = new SpriteRenderer(breadTexture);
-            AddComponent(sprite);
-
-            var xProportion = playerIndex == PlayerIndex.One ? 1 : 5;
-            var y = Constants.Floor - sprite.Height / 2;
-            this.Position = new Vector2(Screen.Width * xProportion / 6, y);
+            AddComponent(new FighterComponent(playerIndex, breadTexture));
         }
     }
 }

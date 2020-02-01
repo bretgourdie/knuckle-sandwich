@@ -3,25 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KnuckleSandwich.Shared;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Nez;
+using Nez.Sprites;
 
 namespace KnuckleSandwich.Gameplay.Components
 {
     class FighterComponent : Component
     {
-        public readonly VirtualIntegerAxis XAxisInput;
-        public readonly VirtualIntegerAxis YAxisInput;
-        public readonly VirtualButton AttackInput;
+        public VirtualIntegerAxis XAxisInput { get; private set; }
+        public VirtualIntegerAxis YAxisInput { get; private set; }
+        public VirtualButton AttackInput { get; private set; }
+
+        private readonly PlayerIndex _playerIndex;
+        private readonly Texture2D _breadTexture;
 
         // TODO: Uncomment after testing with game pads
-        public FighterComponent(PlayerIndex playerIndex)
+        public FighterComponent(
+            PlayerIndex playerIndex,
+            Texture2D breadTexture)
         {
-            var negativeXKeyboardKey = playerIndex == PlayerIndex.One ?
+            _playerIndex = playerIndex;
+            _breadTexture = breadTexture;
+        }
+
+        public override void OnAddedToEntity()
+        {
+            base.OnAddedToEntity();
+
+            var idleSprite = new SpriteRenderer(_breadTexture);
+            Entity.AddComponent(idleSprite);
+
+            Entity.AddComponent(new BoxCollider(_breadTexture.Bounds));
+
+            Entity.AddComponent(new Mover());
+
+            var xProportion = _playerIndex == PlayerIndex.One ? 1 : 5;
+            var y = Constants.Floor - idleSprite.Height / 2;
+            Entity.Position = new Vector2(Screen.Width * xProportion / 6, y);
+
+            var negativeXKeyboardKey = _playerIndex == PlayerIndex.One ?
                 Keys.A :
                 Keys.Left;
-            var positiveXKeyboardKey = playerIndex == PlayerIndex.One ?
+            var positiveXKeyboardKey = _playerIndex == PlayerIndex.One ?
                 Keys.D :
                 Keys.Right;
 
@@ -34,10 +61,10 @@ namespace KnuckleSandwich.Gameplay.Components
                     positiveXKeyboardKey)
             );
 
-            var negativeYKeyboardKey = playerIndex == PlayerIndex.One ?
+            var negativeYKeyboardKey = _playerIndex == PlayerIndex.One ?
                 Keys.S :
                 Keys.Down;
-            var positiveYKeyboardKey = playerIndex == PlayerIndex.One ?
+            var positiveYKeyboardKey = _playerIndex == PlayerIndex.One ?
                 Keys.W :
                 Keys.Up;
             YAxisInput = new VirtualIntegerAxis(
@@ -49,7 +76,7 @@ namespace KnuckleSandwich.Gameplay.Components
                     positiveYKeyboardKey)
             );
 
-            var keyboardAttackButton = playerIndex == PlayerIndex.One ?
+            var keyboardAttackButton = _playerIndex == PlayerIndex.One ?
                 Keys.LeftShift :
                 Keys.RightControl;
             AttackInput = new VirtualButton(

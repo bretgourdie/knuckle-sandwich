@@ -11,17 +11,21 @@ namespace KnuckleSandwich.Gameplay.Systems
 {
     class MovementSystem : EntityProcessingSystem
     {
-        const float _moveSpeed = 3f;
-        Mover _mover = new Mover();
+        const float _moveSpeed = 150f;
 
         public MovementSystem() : base(
             new Matcher()
-            .All(typeof(FighterComponent)))
+            .All(
+                typeof(FighterComponent),
+                typeof(Mover)
+            )
+        )
         { }
 
         public override void Process(Entity entity)
         {
             var fighterComponent = entity.GetComponent<FighterComponent>();
+            var mover = entity.GetComponent<Mover>();
 
             var leftRightMovement = new Vector2(
                 fighterComponent.XAxisInput,
@@ -31,8 +35,8 @@ namespace KnuckleSandwich.Gameplay.Systems
             {
                 var movement = leftRightMovement * _moveSpeed * Time.DeltaTime;
 
-                _mover.CalculateMovement(ref movement, out var res);
-                _mover.ApplyMovement(movement);
+                mover.CalculateMovement(ref movement, out var res);
+                mover.ApplyMovement(movement);
             }
         }
     }
