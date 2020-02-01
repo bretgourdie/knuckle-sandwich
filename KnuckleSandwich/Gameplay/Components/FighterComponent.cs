@@ -37,7 +37,7 @@ namespace KnuckleSandwich.Gameplay.Components
             var idleSprite = new SpriteRenderer(_breadTexture);
             Entity.AddComponent(idleSprite);
 
-            Entity.AddComponent(new BoxCollider(_breadTexture.Bounds));
+            Entity.AddComponent(new CircleCollider(_breadTexture.Bounds.Height / 2));
 
             Entity.AddComponent(new Mover());
 
