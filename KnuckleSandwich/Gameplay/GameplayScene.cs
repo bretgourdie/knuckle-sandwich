@@ -20,8 +20,8 @@ namespace KnuckleSandwich.Gameplay
 
         public override void Initialize()
         {
-            _breadTexture = Content.Load<Texture2D>(@"Sprites\Bread\Idle");
-            _backgroundTexture = Content.Load<Texture2D>(@"Sprites\Gameplay\Background");
+            _breadTexture = Content.Load<Texture2D>(Nez.Content.Sprites.Bread.Idle);
+            _backgroundTexture = Content.Load<Texture2D>(Nez.Content.Sprites.Gameplay.Background);
         }
 
         public override void OnStart()
