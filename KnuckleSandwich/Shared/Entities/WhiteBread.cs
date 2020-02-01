@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KnuckleSandwich.Gameplay.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
@@ -16,6 +17,8 @@ namespace KnuckleSandwich.Shared.Entities
             Texture2D breadTexture,
             PlayerIndex playerIndex)
         {
+            AddComponent(new FighterComponent(playerIndex));
+
             var sprite = new SpriteRenderer(breadTexture);
             AddComponent(sprite);
 

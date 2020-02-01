@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Gameplay\Entities\Background.cs" />
     <Compile Include="Gameplay\Components\FighterComponent.cs" />
+    <Compile Include="Gameplay\Systems\MovementSystem.cs" />
     <Compile Include="Shared\Constants.cs" />
     <Compile Include="Shared\SharedPlaceholder.cs" />
     <Compile Include="Shared\Entities\WhiteBread.cs" />

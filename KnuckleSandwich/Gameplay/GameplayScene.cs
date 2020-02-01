@@ -1,4 +1,5 @@
 ﻿using KnuckleSandwich.Gameplay.Entities;
+using KnuckleSandwich.Gameplay.Systems;
 using KnuckleSandwich.Shared.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -33,6 +34,13 @@ namespace KnuckleSandwich.Gameplay
             };
 
             entities.ToList().ForEach(x => AddEntity(x));
+
+            var systems = new EntitySystem[]
+            {
+                new MovementSystem()
+            };
+
+            systems.ToList().ForEach(x => AddEntityProcessor(x));
 
         }
     }
