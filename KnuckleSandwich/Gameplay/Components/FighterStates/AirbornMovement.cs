@@ -3,11 +3,11 @@ using Nez.Sprites;
 
 namespace KnuckleSandwich.Gameplay.Components.FighterStates
 {
-    class Hurt : FighterState
+    class AirbornMovement : FighterState
     {
         protected override SpriteRenderer loadSprite()
         {
-            return loadSprite(Content.Sprites.Bread.Hurt);
+            return loadSprite(Content.Sprites.Bread.Jump);
         }
     }
 }
