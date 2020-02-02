@@ -53,7 +53,9 @@ namespace KnuckleSandwich.Gameplay
                 new JumpSystem(),
                 new JumpAttackSystem(),
                 new NeutralAttackSystem(),
-                new WalkSystem()
+                new WalkSystem(),
+                // After FighterStateSystemsProcessing
+                new GravitySystem()
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));

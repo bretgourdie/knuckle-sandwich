@@ -73,6 +73,7 @@
     <Compile Include="Gameplay\Systems\FighterStateSystems\JumpSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\NeutralAttackSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\WalkSystem.cs" />
+    <Compile Include="Gameplay\Systems\FighterStateSystems\GravitySystem.cs" />
     <Compile Include="Shared\Constants.cs" />
     <Compile Include="Shared\SharedPlaceholder.cs" />
     <Compile Include="Shared\Entities\WhiteBread.cs" />
