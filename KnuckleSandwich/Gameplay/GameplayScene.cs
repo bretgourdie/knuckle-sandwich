@@ -46,7 +46,13 @@ namespace KnuckleSandwich.Gameplay
                 new MovementSystem(),
                 new JumpSystem(),
                 new FacingSystem(spritePointer, player1, player2),
-                new IdleSystem()
+
+                // FighterStateSystems
+                new CrouchAttackSystem(),
+                new CrouchSystem(),
+                new HurtSystem(),
+                new IdleSystem(),
+                new JumpAttackSystem()
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));
