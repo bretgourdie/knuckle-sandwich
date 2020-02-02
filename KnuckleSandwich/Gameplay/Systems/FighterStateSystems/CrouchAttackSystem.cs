@@ -12,11 +12,13 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
     {
         const float attackTime = 0.35f;
 
-        public CrouchAttackSystem() : base(typeof(CrouchAttackSystem))
+        public CrouchAttackSystem() : base(typeof(CrouchAttack))
         { }
 
         public override void Process(Entity entity)
         {
+            base.Process(entity);
+
             var crouchAttack = entity.GetComponent<CrouchAttack>();
 
             if (crouchAttack.TimeSpentInState >= attackTime)

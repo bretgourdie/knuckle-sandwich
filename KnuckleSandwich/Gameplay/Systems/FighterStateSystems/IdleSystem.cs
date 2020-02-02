@@ -15,6 +15,8 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
         public override void Process(Entity entity)
         {
+            base.Process(entity);
+
             var yInput = yAxis(entity);
             var xInput = xAxis(entity);
 

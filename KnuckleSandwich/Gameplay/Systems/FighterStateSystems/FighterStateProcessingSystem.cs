@@ -1,4 +1,5 @@
 ﻿using KnuckleSandwich.Gameplay.Components;
+using KnuckleSandwich.Gameplay.Components.FighterStates;
 using Nez;
 using System;
 
@@ -8,8 +9,20 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
     {
         public FighterStateProcessingSystem(
             params Type[] types) : base(
-            new Matcher().All(types).All(typeof(FighterComponent)))
+            new Matcher().All(types).All(
+                typeof(FighterComponent)
+            ))
         { }
+
+        public override void Process(Entity entity)
+        {
+            var fs = entity.GetComponent<FighterState>();
+
+            if (fs != null)
+            {
+                fs.TimeSpentInState += Time.DeltaTime;
+            }
+        }
 
         protected VirtualAxis xAxis(Entity entity)
         {

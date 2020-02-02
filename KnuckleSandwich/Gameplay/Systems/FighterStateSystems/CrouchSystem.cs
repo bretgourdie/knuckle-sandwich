@@ -9,6 +9,8 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
         public override void Process(Entity entity)
         {
+            base.Process(entity);
+
             var yInput = yAxis(entity);
 
             if (attackButton(entity).IsPressed)
