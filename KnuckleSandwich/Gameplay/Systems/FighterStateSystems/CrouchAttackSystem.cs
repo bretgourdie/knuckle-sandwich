@@ -30,35 +30,40 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
                 {
                     if (isTryingToDown(yInput))
                     {
-                        entity.RemoveComponent<CrouchAttack>();
+                        cleanupForStateChange(entity);
                         addState<CrouchAttack>(entity);
                     }
 
                     else if (inIdleYDeadZone(yInput))
                     {
-                        entity.RemoveComponent<CrouchAttack>();
+                        cleanupForStateChange(entity);
                         addState<NeutralAttack>(entity);
                     }
                 }
 
                 if (isTryingToUp(yInput))
                 {
-                    entity.RemoveComponent<CrouchAttack>();
+                    cleanupForStateChange(entity);
                     addState<CrouchAttack>(entity);
                 }
 
                 else if (isTryingToDown(yInput))
                 {
-                    entity.RemoveComponent<CrouchAttack>();
+                    cleanupForStateChange(entity);
                     addState<Crouch>(entity);
                 }
 
                 else
                 {
-                    entity.RemoveComponent<CrouchAttack>();
+                    cleanupForStateChange(entity);
                     addState<Idle>(entity);
                 }
             }
+        }
+
+        protected override void cleanupForStateChange(Entity entity)
+        {
+            entity.RemoveComponent<CrouchAttack>();
         }
     }
 }

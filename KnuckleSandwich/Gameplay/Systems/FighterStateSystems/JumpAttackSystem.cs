@@ -22,9 +22,14 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             var fc = entity.GetComponent<FighterState>();
             if (fc.TimeSpentInState > attackTime)
             {
-                entity.RemoveComponent<JumpAttack>();
+                cleanupForStateChange(entity);
                 addState<Jump>(entity);
             }
+        }
+
+        protected override void cleanupForStateChange(Entity entity)
+        {
+            entity.RemoveComponent<JumpAttack>();
         }
     }
 }

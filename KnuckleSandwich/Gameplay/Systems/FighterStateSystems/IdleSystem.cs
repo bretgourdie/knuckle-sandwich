@@ -22,27 +22,32 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
             if (isTryingToAttack(attackButton(entity)))
             {
-                entity.RemoveComponent<Idle>();
+                cleanupForStateChange(entity);
                 addState<NeutralAttack>(entity);
             }
 
             else if (isTryingToUp(yInput))
             {
-                entity.RemoveComponent<Idle>();
+                cleanupForStateChange(entity);
                 addState<Jump>(entity);
             }
 
             else if (isTryingToDown(yInput))
             {
-                entity.RemoveComponent<Idle>();
+                cleanupForStateChange(entity);
                 addState<Crouch>(entity);
             }
 
             else if (isTryingToLeft(xInput) || isTryingToRight(xInput))
             {
-                entity.RemoveComponent<Idle>();
+                cleanupForStateChange(entity);
                 addState<Walk>(entity);
             }
+        }
+
+        protected override void cleanupForStateChange(Entity entity)
+        {
+            entity.RemoveComponent<Idle>();
         }
     }
 }

@@ -29,9 +29,14 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
             else
             {
-                entity.RemoveComponent<Hurt>();
+                cleanupForStateChange(entity);
                 addState<Idle>(entity);
             }
+        }
+
+        protected override void cleanupForStateChange(Entity entity)
+        {
+            entity.RemoveComponent<Hurt>();
         }
     }
 }

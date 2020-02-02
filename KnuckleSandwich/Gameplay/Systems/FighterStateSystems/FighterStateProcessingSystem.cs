@@ -14,6 +14,8 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             ))
         { }
 
+        protected abstract void cleanupForStateChange(Entity entity);
+
         public override void Process(Entity entity)
         {
             var fs = entity.GetComponent<FighterState>();
