@@ -57,6 +57,7 @@ namespace KnuckleSandwich.Gameplay.Components
 
             addState<AirbornMovement>(new AirbornMovement());
             addState<Crouch>(new Crouch());
+            addState<CrouchAttack>(new CrouchAttack());
             addState<Dead>(new Dead());
             addState<Hurt>(new Hurt());
             addState<Idle>(idle);
