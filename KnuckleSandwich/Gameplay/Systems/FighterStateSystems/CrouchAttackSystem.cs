@@ -55,7 +55,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
                 else
                 {
-                    entity.RemoveComponent<Crouch>();
+                    entity.RemoveComponent<CrouchAttack>();
                     addState<Idle>(entity);
                 }
             }
