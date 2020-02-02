@@ -43,7 +43,6 @@ namespace KnuckleSandwich.Gameplay
 
             var systems = new EntitySystem[]
             {
-                new MovementSystem(),
                 new JumpSystem(),
                 new FacingSystem(spritePointer, player1, player2),
 
@@ -52,7 +51,8 @@ namespace KnuckleSandwich.Gameplay
                 new CrouchSystem(),
                 new HurtSystem(),
                 new IdleSystem(),
-                new JumpAttackSystem()
+                new JumpAttackSystem(),
+                new WalkSystem()
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));
