@@ -30,7 +30,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             if (isTryingToAttack(attackButton(entity)))
             {
                 cleanupForStateChange(entity);
-                entity.AddComponent<JumpAttack>();
+                addState<JumpAttack>(entity);
             }
 
             else
