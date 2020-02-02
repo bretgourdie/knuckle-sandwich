@@ -19,6 +19,8 @@ namespace KnuckleSandwich.Gameplay.Components
         public VirtualAxis YAxisInput { get; private set; }
         public VirtualButton AttackInput { get; private set; }
 
+        public SpriteAnimator Animator { get; private set; }
+
         public IDictionary<Type, FighterState> States;
 
         private readonly PlayerIndex _playerIndex;
@@ -44,9 +46,22 @@ namespace KnuckleSandwich.Gameplay.Components
 
             _handleStates();
 
+            _handleAnimations();
+
             _handleInput();
 
             _handlePosition();
+        }
+
+        private void _handleAnimations()
+        {
+            Animator = new SpriteAnimator();
+            foreach (var state in States.Values)
+            {
+                Animator.AddAnimation(
+                    state.GetType().Name,
+                    new[] { state.Sprite.Sprite });
+            }
         }
 
         private void _handleStates()
