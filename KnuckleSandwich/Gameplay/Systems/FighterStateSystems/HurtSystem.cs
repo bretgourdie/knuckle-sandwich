@@ -11,6 +11,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
     class HurtSystem : FighterStateProcessingSystem
     {
         const float stunTime = 0.25f;
+        const float knockbackPerFrame = 10f;
 
         public HurtSystem() : base(typeof(Hurt))
         { }
@@ -21,7 +22,12 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
             var fc = entity.GetComponent<FighterState>();
 
-            if (fc.TimeSpentInState > stunTime)
+            if (fc.TimeSpentInState <= stunTime)
+            {
+                // do something with knockback
+            }
+
+            else
             {
                 entity.RemoveComponent<Hurt>();
                 addState<Idle>(entity);
