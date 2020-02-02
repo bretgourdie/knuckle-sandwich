@@ -52,6 +52,7 @@ namespace KnuckleSandwich.Gameplay
                 new HurtSystem(),
                 new IdleSystem(),
                 new JumpAttackSystem(),
+                new NeutralAttackSystem(),
                 new WalkSystem()
             };
 

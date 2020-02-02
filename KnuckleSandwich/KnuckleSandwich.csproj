@@ -71,6 +71,7 @@
     <Compile Include="Gameplay\Systems\FighterStateSystems\HurtSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\IdleSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\JumpAttackSystem.cs" />
+    <Compile Include="Gameplay\Systems\FighterStateSystems\NeutralAttackSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\WalkSystem.cs" />
     <Compile Include="Gameplay\Systems\JumpSystem.cs" />
     <Compile Include="Shared\Constants.cs" />
