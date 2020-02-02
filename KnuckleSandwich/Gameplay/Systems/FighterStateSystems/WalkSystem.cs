@@ -1,4 +1,5 @@
 ﻿using KnuckleSandwich.Gameplay.Components.FighterStates;
+using KnuckleSandwich.Shared;
 using Microsoft.Xna.Framework;
 using Nez;
 
@@ -6,8 +7,6 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 {
     class WalkSystem : FighterStateProcessingSystem
     {
-        const float _moveSpeed = 350f;
-
         public WalkSystem() : base(typeof(Walk), typeof(Mover))
         { }
 
@@ -48,7 +47,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
                     xInput.Value,
                     0);
 
-                var movement = leftRightMovement * _moveSpeed * Time.DeltaTime;
+                var movement = leftRightMovement * Constants.MoveSpeed * Time.DeltaTime;
 
                 mover.CalculateMovement(ref movement, out var res);
                 mover.ApplyMovement(movement);

@@ -1,13 +1,9 @@
 ﻿using Nez;
-using Nez.Sprites;
 
 namespace KnuckleSandwich.Gameplay.Components.FighterStates
 {
-    class AirbornMovement : FighterState
+    class AirbornMovement : Component
     {
-        protected override SpriteRenderer loadSprite()
-        {
-            return loadSprite(Content.Sprites.Bread.Jump);
-        }
+        public float YVelocity = -1200f;
     }
 }

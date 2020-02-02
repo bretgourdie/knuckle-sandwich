@@ -43,7 +43,6 @@ namespace KnuckleSandwich.Gameplay
 
             var systems = new EntitySystem[]
             {
-                new JumpSystem(),
                 new FacingSystem(spritePointer, player1, player2),
 
                 // FighterStateSystems
@@ -51,6 +50,7 @@ namespace KnuckleSandwich.Gameplay
                 new CrouchSystem(),
                 new HurtSystem(),
                 new IdleSystem(),
+                new JumpSystem(),
                 new JumpAttackSystem(),
                 new NeutralAttackSystem(),
                 new WalkSystem()

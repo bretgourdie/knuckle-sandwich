@@ -42,8 +42,6 @@ namespace KnuckleSandwich.Gameplay.Components
 
             Entity.AddComponent(new Mover());
 
-            Entity.AddComponent(new JumpComponent());
-
             _handleStates();
 
             _handleInput();
@@ -55,7 +53,6 @@ namespace KnuckleSandwich.Gameplay.Components
         {
             var idle = new Idle();
 
-            addState<AirbornMovement>(new AirbornMovement());
             addState<Crouch>(new Crouch());
             addState<CrouchAttack>(new CrouchAttack());
             addState<Dead>(new Dead());

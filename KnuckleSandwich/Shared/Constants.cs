@@ -11,5 +11,6 @@ namespace KnuckleSandwich.Shared
             => FighterOnFloor(sprite.Height);
         public static float FighterOnFloor(float height)
             => Height - 80 - height / 2;
+        public const float MoveSpeed = 350f;
     }
 }
