@@ -15,7 +15,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
         public override void Process(Entity entity)
         {
-            var yAxis = base.yAxis(entity);
+            var yInput = yAxis(entity);
 
             if (attackButton(entity).IsPressed)
             {
@@ -23,16 +23,16 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
                 addState<CrouchAttack>(entity);
             }
 
-            else if (isTryingToDown(yAxis))
-            {
-                entity.RemoveComponent<Crouch>();
-                addState<Idle>(entity);
-            }
-
-            else if (isTryingToUp(yAxis))
+            else if (isTryingToUp(yInput))
             {
                 entity.RemoveComponent<Crouch>();
                 addState<Jump>(entity);
+            }
+
+            else if (inIdleXDeadZone(yInput))
+            {
+                entity.RemoveComponent<Crouch>();
+                addState<Idle>(entity);
             }
         }
     }
