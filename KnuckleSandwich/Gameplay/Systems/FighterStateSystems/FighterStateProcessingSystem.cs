@@ -91,7 +91,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             if (states.ContainsKey(stateType))
             {
                 var state = states[stateType];
-                Debug.Log($"Transitioning to {stateType.ToString()}");
+                Debug.Log($"{this.GetType().Name} transitioning to {stateType.Name}");
                 entity.AddComponent(states[stateType]);
             }
 
