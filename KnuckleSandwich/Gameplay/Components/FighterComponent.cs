@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KnuckleSandwich.Gameplay.Components.FighterStates;
 using KnuckleSandwich.Shared;
 using Microsoft.Xna.Framework;
@@ -44,29 +41,18 @@ namespace KnuckleSandwich.Gameplay.Components
 
             Entity.AddComponent(new Mover());
 
-            _handleStates();
+            Animator = Entity.AddComponent(new SpriteAnimator());
 
-            _handleAnimations();
+            _handleStates();
 
             _handleInput();
 
             _handlePosition();
         }
 
-        private void _handleAnimations()
-        {
-            Animator = new SpriteAnimator();
-            foreach (var state in States.Values)
-            {
-                Animator.AddAnimation(
-                    state.GetType().Name,
-                    new[] { state.Sprite.Sprite });
-            }
-        }
-
         private void _handleStates()
         {
-            var idle = new Idle();
+            var idle = Entity.AddComponent(new Idle());
 
             addState<Crouch>(new Crouch());
             addState<CrouchAttack>(new CrouchAttack());
@@ -78,12 +64,18 @@ namespace KnuckleSandwich.Gameplay.Components
             addState<NeutralAttack>(new NeutralAttack());
             addState<Walk>(new Walk());
 
-            Entity.AddComponent(idle);
+            Animator.Play(idle.GetType().Name);
         }
 
         private void addState<T>(FighterState fighterState)
         {
             States[typeof(T)] = fighterState;
+            Animator.AddAnimation(
+                fighterState.GetType().Name,
+                new []
+                {
+                    fighterState.Sprite.Sprite
+                });
         }
 
         private void _handlePosition()

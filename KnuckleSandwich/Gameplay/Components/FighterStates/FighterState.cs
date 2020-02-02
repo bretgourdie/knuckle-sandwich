@@ -17,13 +17,7 @@ namespace KnuckleSandwich.Gameplay.Components.FighterStates
 
         public override void OnAddedToEntity()
         {
-            this.AddComponent(Sprite);
             TimeSpentInState = 0;
-        }
-
-        public override void OnRemovedFromEntity()
-        {
-            this.RemoveComponent(Sprite);
         }
 
         protected SpriteRenderer loadSprite(string texture2DPath)

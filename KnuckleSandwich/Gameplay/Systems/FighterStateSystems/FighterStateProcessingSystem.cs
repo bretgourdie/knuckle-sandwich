@@ -1,6 +1,7 @@
 ﻿using KnuckleSandwich.Gameplay.Components;
 using KnuckleSandwich.Gameplay.Components.FighterStates;
 using Nez;
+using Nez.Sprites;
 using System;
 
 namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
@@ -85,6 +86,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
         protected void addState<T>(Entity entity)
         {
             var fc = entity.GetComponent<FighterComponent>();
+            var spriteAnimator = entity.GetComponent<SpriteAnimator>();
 
             var states = fc.States;
 
@@ -95,6 +97,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
                 var state = states[stateType];
                 Debug.Log($"{this.GetType().Name} transitioning to {stateType.Name}");
                 entity.AddComponent(states[stateType]);
+                spriteAnimator.Play(stateType.Name);
             }
 
             else
