@@ -73,9 +73,13 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
             var states = fc.States;
 
-            if (states.ContainsKey(typeof(T)))
+            var stateType = typeof(T);
+
+            if (states.ContainsKey(stateType))
             {
-                entity.AddComponent(states[typeof(T)]);
+                var state = states[stateType];
+                Debug.Log($"Transitioning to {stateType.ToString()}");
+                entity.AddComponent(states[stateType]);
             }
 
             else
