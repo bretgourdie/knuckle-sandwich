@@ -10,6 +10,7 @@ namespace Nez
 			public static class Bread
 			{
 				public const string Attack = @"Sprites\Bread\Attack";
+				public const string Butter = @"Sprites\Bread\butter";
 				public const string Crouch = @"Sprites\Bread\Crouch";
 				public const string CrouchAttack = @"Sprites\Bread\CrouchAttack";
 				public const string Dead = @"Sprites\Bread\Dead";
