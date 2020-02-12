@@ -5,14 +5,15 @@ using Nez;
 
 namespace KnuckleSandwich.Shared.Entities
 {
-    class WhiteBread : Entity
+    class Butter : Entity
     {
-        public WhiteBread(
-            Texture2D breadTexture,
+
+
+        public Butter(
+            Texture2D butterTexture,
             PlayerIndex playerIndex)
         {
-            AddComponent(new FighterComponent(playerIndex, breadTexture));
-            Tag = (int)playerIndex;
+            AddComponent(new AttackingComponent(butterTexture, playerIndex));
         }
     }
 }

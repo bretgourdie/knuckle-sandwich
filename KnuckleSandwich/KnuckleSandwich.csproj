@@ -48,7 +48,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContentPathGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Gameplay\Components\AttackingComponent.cs" />
     <Compile Include="Gameplay\Components\FighterStates\AirbornMovement.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\Attack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Crouch.cs" />
     <Compile Include="Gameplay\Components\FighterStates\CrouchAttack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Dead.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Gameplay\Systems\FighterStateSystems\WalkSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\GravitySystem.cs" />
     <Compile Include="Shared\Constants.cs" />
+    <Compile Include="Shared\Entities\Butter.cs" />
     <Compile Include="Shared\Entities\WhiteBread.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Gameplay\GameplayScene.cs" />
