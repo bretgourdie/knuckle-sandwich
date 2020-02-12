@@ -7,13 +7,11 @@ namespace KnuckleSandwich.Shared.Entities
 {
     class Butter : Entity
     {
-
-
         public Butter(
             Texture2D butterTexture,
-            PlayerIndex playerIndex)
+            int playerTag)
         {
-            AddComponent(new AttackingComponent(butterTexture, playerIndex));
+            AddComponent(new AttackingComponent(butterTexture, playerTag));
         }
     }
 }

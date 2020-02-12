@@ -48,12 +48,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContentPathGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Gameplay\ButterFactory.cs" />
     <Compile Include="Gameplay\Components\AttackingComponent.cs" />
     <Compile Include="Gameplay\Components\FighterStates\AirbornMovement.cs" />
-    <Compile Include="Gameplay\Components\FighterStates\Attack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Crouch.cs" />
     <Compile Include="Gameplay\Components\FighterStates\CrouchAttack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Dead.cs" />
+    <Compile Include="Gameplay\Components\FighterStates\FighterAttackState.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Hurt.cs" />
     <Compile Include="Gameplay\Components\FighterStates\JumpAttack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\NeutralAttack.cs" />

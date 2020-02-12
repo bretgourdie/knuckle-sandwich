@@ -3,7 +3,7 @@ using Nez.Sprites;
 
 namespace KnuckleSandwich.Gameplay.Components.FighterStates
 {
-    class CrouchAttack : FighterState
+    class CrouchAttack : FighterAttackState
     {
         protected override SpriteRenderer loadSprite()
         {

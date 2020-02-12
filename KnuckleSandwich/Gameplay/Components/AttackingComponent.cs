@@ -8,14 +8,14 @@ namespace KnuckleSandwich.Gameplay.Components
 {
     class AttackingComponent : Component
     {
-        private readonly PlayerIndex _playerIndex;
+        public readonly int PlayerTag;
         private readonly Texture2D _butterTexture;
 
         public AttackingComponent(
             Texture2D butterTexture,
-            PlayerIndex playerIndex)
+            int playerTag)
         {
-            _playerIndex = playerIndex;
+            PlayerTag = playerTag;
             _butterTexture = butterTexture;
         }
 
