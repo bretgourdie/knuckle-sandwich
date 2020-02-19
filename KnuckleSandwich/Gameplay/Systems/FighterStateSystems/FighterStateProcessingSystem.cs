@@ -41,11 +41,11 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             return fc.YAxisInput;
         }
 
-        protected VirtualButton attackButton(Entity entity)
+        protected VirtualButton tauntButton(Entity entity)
         {
             var fc = entity.GetComponent<FighterComponent>();
 
-            return fc.AttackInput;
+            return fc.TauntInput;
         }
 
         protected bool inIdleYDeadZone(VirtualAxis yAxis)
@@ -78,9 +78,9 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             return yAxis >= 0.25f;
         }
 
-        protected bool isTryingToAttack(VirtualButton attackButton)
+        protected bool isTryingToTaunt(VirtualButton tauntButton)
         {
-            return attackButton.IsPressed;
+            return tauntButton.IsDown;
         }
 
         protected void addState<T>(Entity entity)

@@ -53,7 +53,6 @@
     <Compile Include="Gameplay\Components\FighterStates\CrouchAttack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Dead.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Hurt.cs" />
-    <Compile Include="Gameplay\Components\FighterStates\JumpAttack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\NeutralAttack.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Idle.cs" />
     <Compile Include="Gameplay\Components\FighterStates\FighterState.cs" />
@@ -69,7 +68,6 @@
     <Compile Include="Gameplay\Systems\FighterStateSystems\FighterStateProcessingSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\HurtSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\IdleSystem.cs" />
-    <Compile Include="Gameplay\Systems\FighterStateSystems\JumpAttackSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\JumpSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\NeutralAttackSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\WalkSystem.cs" />

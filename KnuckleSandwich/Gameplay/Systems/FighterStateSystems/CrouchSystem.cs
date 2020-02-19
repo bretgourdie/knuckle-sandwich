@@ -13,7 +13,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
             var yInput = yAxis(entity);
 
-            if (attackButton(entity).IsPressed)
+            if (isTryingToTaunt(tauntButton(entity)))
             {
                 cleanupForStateChange(entity);
                 addState<CrouchAttack>(entity);

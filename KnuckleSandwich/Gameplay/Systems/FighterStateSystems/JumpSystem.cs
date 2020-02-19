@@ -27,17 +27,8 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
                     MathHelper.Max(0f, airbornMovement.YVelocity);
             }
 
-            if (isTryingToAttack(attackButton(entity)))
-            {
-                cleanupForStateChange(entity);
-                addState<JumpAttack>(entity);
-            }
-
-            else
-            {
-                var xMovement = xInput.Value * Constants.MoveSpeed;
-                airbornMovement.XVelocity = xMovement;
-            }
+            var xMovement = xInput.Value * Constants.MoveSpeed;
+            airbornMovement.XVelocity = xMovement;
         }
 
         protected override void cleanupForStateChange(Entity entity)

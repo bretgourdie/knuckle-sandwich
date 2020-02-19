@@ -19,21 +19,14 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
         {
             base.Process(entity);
 
-            var na = entity.GetComponent<NeutralAttack>();
+            var tauntInput = tauntButton(entity);
 
-            if (na.TimeSpentInState >= _attackTime)
+            if (!isTryingToTaunt(tauntInput))
             {
                 var xInput = xAxis(entity);
                 var yInput = yAxis(entity);
-                var attackInput = attackButton(entity);
 
-                if (isTryingToAttack(attackInput))
-                {
-                    cleanupForStateChange(entity);
-                    addState<NeutralAttack>(entity);
-                }
-
-                else if (isTryingToUp(yInput))
+                if (isTryingToUp(yInput))
                 {
                     cleanupForStateChange(entity);
                     addState<Jump>(entity);

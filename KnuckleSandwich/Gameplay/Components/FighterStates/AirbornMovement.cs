@@ -15,11 +15,6 @@ namespace KnuckleSandwich.Gameplay.Components.FighterStates
             {
                 Entity.RemoveComponent<Jump>();
             }
-
-            if (Entity.GetComponent<JumpAttack>() != null)
-            {
-                Entity.RemoveComponent<JumpAttack>();
-            }
         }
     }
 }

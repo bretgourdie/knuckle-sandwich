@@ -20,7 +20,7 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
             var yInput = yAxis(entity);
             var xInput = xAxis(entity);
 
-            if (isTryingToAttack(attackButton(entity)))
+            if (isTryingToTaunt(tauntButton(entity)))
             {
                 cleanupForStateChange(entity);
                 addState<NeutralAttack>(entity);

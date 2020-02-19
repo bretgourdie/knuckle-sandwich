@@ -46,13 +46,12 @@ namespace KnuckleSandwich.Gameplay
                 new FacingSystem(spritePointer, player1, player2),
 
                 // FighterStateSystems
-                new CrouchAttackSystem(),
                 new CrouchSystem(),
+                new CrouchAttackSystem(),
                 new HurtSystem(),
                 new IdleSystem(),
-                new JumpSystem(),
-                new JumpAttackSystem(),
                 new NeutralAttackSystem(),
+                new JumpSystem(),
                 new WalkSystem(),
                 // After FighterStateSystemsProcessing
                 new GravitySystem()

@@ -14,7 +14,7 @@ namespace KnuckleSandwich.Gameplay.Components
     {
         public VirtualAxis XAxisInput { get; private set; }
         public VirtualAxis YAxisInput { get; private set; }
-        public VirtualButton AttackInput { get; private set; }
+        public VirtualButton TauntInput { get; private set; }
 
         public SpriteAnimator Animator { get; private set; }
 
@@ -60,7 +60,6 @@ namespace KnuckleSandwich.Gameplay.Components
             addState<Hurt>(new Hurt());
             addState<Idle>(idle);
             addState<Jump>(new Jump());
-            addState<JumpAttack>(new JumpAttack());
             addState<NeutralAttack>(new NeutralAttack());
             addState<Walk>(new Walk());
 
@@ -115,20 +114,20 @@ namespace KnuckleSandwich.Gameplay.Components
                     positiveYKeyboardKey)
             );
 
-            var keyboardAttackButton = _playerIndex == PlayerIndex.One ?
+            var keyboardTantButton = _playerIndex == PlayerIndex.One ?
                 Keys.LeftShift :
                 Keys.RightControl;
 
-            var listOfAttackButtons = new List<VirtualButton.Node>();
+            var listOfTauntButtons = new List<VirtualButton.Node>();
 
-            var gamePadAttackButton = _getGamePadXButton(_playerIndex);
-            if (gamePadAttackButton != null)
+            var gamePadTauntButton = _getGamePadXButton(_playerIndex);
+            if (gamePadTauntButton != null)
             {
-                listOfAttackButtons.Add(gamePadAttackButton);
+                listOfTauntButtons.Add(gamePadTauntButton);
             }
-            listOfAttackButtons.Add(new VirtualButton.KeyboardKey(keyboardAttackButton));
+            listOfTauntButtons.Add(new VirtualButton.KeyboardKey(keyboardTantButton));
 
-            AttackInput = new VirtualButton(listOfAttackButtons.ToArray());
+            TauntInput = new VirtualButton(listOfTauntButtons.ToArray());
         }
 
         private bool _isGamePadConnected(PlayerIndex playerIndex)

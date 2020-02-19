@@ -19,27 +19,12 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
         {
             base.Process(entity);
 
-            var crouchAttack = entity.GetComponent<CrouchAttack>();
+            var tauntInput = tauntButton(entity);
 
-            if (crouchAttack.TimeSpentInState >= attackTime)
+            if (!isTryingToTaunt(tauntInput))
             {
                 var yInput = yAxis(entity);
                 var xInput = xAxis(entity);
-
-                if (isTryingToAttack(attackButton(entity)))
-                {
-                    if (isTryingToDown(yInput))
-                    {
-                        cleanupForStateChange(entity);
-                        addState<CrouchAttack>(entity);
-                    }
-
-                    else if (inIdleYDeadZone(yInput))
-                    {
-                        cleanupForStateChange(entity);
-                        addState<NeutralAttack>(entity);
-                    }
-                }
 
                 if (isTryingToUp(yInput))
                 {
