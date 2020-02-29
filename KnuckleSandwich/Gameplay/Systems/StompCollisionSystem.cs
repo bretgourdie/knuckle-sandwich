@@ -1,5 +1,8 @@
 ﻿using KnuckleSandwich.Gameplay.Components;
+using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Sprites;
+using System.Linq;
 
 namespace KnuckleSandwich.Gameplay.Systems
 {
@@ -15,19 +18,47 @@ namespace KnuckleSandwich.Gameplay.Systems
         {
             var selfCollider = entity.GetComponent<BoxCollider>();
 
-            var otherColliders = Physics.BoxcastBroadphaseExcludingSelf(selfCollider);
+            var otherColliders = Physics.BoxcastBroadphaseExcludingSelf(selfCollider).ToList();
 
-            foreach (var otherCollider in otherColliders)
+            for (int ii = 0; ii < otherColliders.Count; ii++)
             {
+                var otherCollider = otherColliders[ii];
                 if (otherCollider is BoxCollider)
                 {
-                    var otherBoxCollider = (BoxCollider)otherCollider;
+                    var otherBoxCollider = otherCollider as BoxCollider;
                     if (isBeingStompedOn(selfCollider, otherBoxCollider))
                     {
                         entity.Destroy();
                     }
+
+                    else if (isOtherCollision(selfCollider, otherBoxCollider))
+                    {
+                        // bump backwards
+                        var spriteRenderer = entity.GetComponent<SpriteRenderer>();
+
+                        var xVelocity = -120f;
+
+                        if (spriteRenderer.FlipX)
+                        {
+                            xVelocity *= -1;
+                        }
+
+                        bumpBack(entity, xVelocity);
+
+                        bumpBack(otherCollider.Entity, -xVelocity);
+                    }
                 }
             }
+        }
+
+        private void bumpBack(Entity entity, float xVelocity)
+        {
+            var mover = entity.GetComponent<Mover>();
+
+            mover.ApplyMovement(
+                new Vector2(
+                    xVelocity,
+                    0));
         }
 
         private bool isBeingStompedOn(
@@ -36,7 +67,17 @@ namespace KnuckleSandwich.Gameplay.Systems
         {
             var isColliding = self.CollidesWith(other, out CollisionResult collisionResult);
 
-            return collisionResult.MinimumTranslationVector.Y < 0;
+            return isColliding
+                && collisionResult.MinimumTranslationVector.Y < 0
+                && collisionResult.MinimumTranslationVector.X == 0;
+        }
+
+        private bool isOtherCollision(
+            BoxCollider self,
+            BoxCollider other)
+        {
+            var isColliding = self.CollidesWith(other, out CollisionResult collisionResult);
+            return isColliding;
         }
     }
 }
