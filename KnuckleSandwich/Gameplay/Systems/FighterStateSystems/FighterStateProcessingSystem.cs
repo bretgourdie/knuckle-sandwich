@@ -70,7 +70,9 @@ namespace KnuckleSandwich.Gameplay.Systems.FighterStateSystems
 
         protected bool isTryingToDown(VirtualAxis yAxis)
         {
-            return yAxis.Value <= -0.25f;
+            // Remove crouching
+            return false;
+            //return yAxis.Value <= -0.25f;
         }
 
         protected bool isTryingToUp(VirtualAxis yAxis)
