@@ -37,7 +37,7 @@ namespace KnuckleSandwich.Gameplay.Components
         {
             base.OnAddedToEntity();
 
-            Entity.AddComponent(new CircleCollider(_breadTexture.Bounds.Height / 2));
+            Entity.AddComponent(new BoxCollider() { IsTrigger = true });
 
             Entity.AddComponent(new Mover());
 

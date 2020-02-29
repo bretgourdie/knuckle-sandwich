@@ -54,6 +54,7 @@ namespace KnuckleSandwich.Gameplay
                 new JumpSystem(),
                 new WalkSystem(),
                 // After FighterStateSystemsProcessing
+                new StompCollisionSystem(),
                 new GravitySystem()
             };
 
