@@ -20,6 +20,8 @@ namespace KnuckleSandwich.Gameplay.Components
 
         public IDictionary<Type, FighterState> States;
 
+        public float KnockbackVelocity;
+
         private readonly PlayerIndex _playerIndex;
         private readonly Texture2D _breadTexture;
 

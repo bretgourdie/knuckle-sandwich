@@ -31,12 +31,13 @@ namespace KnuckleSandwich.Gameplay.Systems
                         entity.Destroy();
                     }
 
-                    else if (isOtherCollision(selfCollider, otherBoxCollider))
+                    else if (!isStomping(selfCollider, otherBoxCollider)
+                        && isOtherCollision(selfCollider, otherBoxCollider))
                     {
                         // bump backwards
                         var spriteRenderer = entity.GetComponent<SpriteRenderer>();
 
-                        var xVelocity = -120f;
+                        var xVelocity = -40f;
 
                         if (spriteRenderer.FlipX)
                         {
@@ -53,12 +54,15 @@ namespace KnuckleSandwich.Gameplay.Systems
 
         private void bumpBack(Entity entity, float xVelocity)
         {
-            var mover = entity.GetComponent<Mover>();
+            var fc = entity.GetComponent<FighterComponent>();
+            fc.KnockbackVelocity = xVelocity;
+        }
 
-            mover.ApplyMovement(
-                new Vector2(
-                    xVelocity,
-                    0));
+        private bool isStomping(
+            BoxCollider self,
+            BoxCollider other)
+        {
+            return isBeingStompedOn(other, self);
         }
 
         private bool isBeingStompedOn(
