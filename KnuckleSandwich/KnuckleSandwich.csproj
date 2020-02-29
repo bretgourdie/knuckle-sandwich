@@ -62,6 +62,7 @@
     <Compile Include="Gameplay\Entities\Background.cs" />
     <Compile Include="Gameplay\Components\FighterComponent.cs" />
     <Compile Include="Gameplay\Entities\SpritePointer.cs" />
+    <Compile Include="Gameplay\Systems\BoundarySystem.cs" />
     <Compile Include="Gameplay\Systems\BumpbackSystem.cs" />
     <Compile Include="Gameplay\Systems\FacingSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\CrouchAttackSystem.cs" />
