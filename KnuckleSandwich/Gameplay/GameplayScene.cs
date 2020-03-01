@@ -60,7 +60,8 @@ namespace KnuckleSandwich.Gameplay
                 new BoundarySystem(),
 
                 // Misc
-                new WinSystem()
+                new WinSystem(),
+                new ResetSystem()
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));

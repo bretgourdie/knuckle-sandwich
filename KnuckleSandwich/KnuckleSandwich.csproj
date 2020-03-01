@@ -77,6 +77,7 @@
     <Compile Include="Gameplay\Systems\FighterStateSystems\NeutralAttackSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\WalkSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\GravitySystem.cs" />
+    <Compile Include="Gameplay\Systems\ResetSystem.cs" />
     <Compile Include="Gameplay\Systems\StompCollisionSystem.cs" />
     <Compile Include="Gameplay\Systems\WinSystem.cs" />
     <Compile Include="Shared\Constants.cs" />

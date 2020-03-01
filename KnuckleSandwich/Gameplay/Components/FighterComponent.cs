@@ -15,6 +15,7 @@ namespace KnuckleSandwich.Gameplay.Components
         public VirtualAxis XAxisInput { get; private set; }
         public VirtualAxis YAxisInput { get; private set; }
         public VirtualButton TauntInput { get; private set; }
+        public VirtualButton ResetInput { get; private set; }
 
         public SpriteAnimator Animator { get; private set; }
 
@@ -132,6 +133,16 @@ namespace KnuckleSandwich.Gameplay.Components
             listOfTauntButtons.Add(new VirtualButton.KeyboardKey(keyboardTantButton));
 
             TauntInput = new VirtualButton(listOfTauntButtons.ToArray());
+
+            var listOfResetButtons = new List<VirtualButton.Node>();
+            var gamePadResetButton = _getGamePadBackButton(_playerIndex);
+            if (gamePadResetButton != null)
+            {
+                listOfResetButtons.Add(gamePadResetButton);
+            }
+            listOfResetButtons.Add(new VirtualButton.KeyboardKey(Keys.F5));
+
+            ResetInput = new VirtualButton(listOfResetButtons.ToArray());
         }
 
         private bool _isGamePadConnected(PlayerIndex playerIndex)
@@ -181,6 +192,15 @@ namespace KnuckleSandwich.Gameplay.Components
             {
                 return new VirtualAxis.Node[] { };
             }
+        }
+
+        private VirtualButton.Node _getGamePadBackButton(PlayerIndex playerIndex)
+        {
+            if (_isGamePadConnected(playerIndex))
+            {
+                return new VirtualButton.GamePadButton((int)playerIndex, Buttons.Back);
+            }
+            return null;
         }
     }
 }
