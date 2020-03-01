@@ -45,6 +45,8 @@ namespace KnuckleSandwich.Gameplay.Components
 
             Animator = Entity.AddComponent(new SpriteAnimator());
 
+            Entity.Tag = (int)_playerIndex;
+
             _handleStates();
 
             _handleInput();

@@ -57,7 +57,10 @@ namespace KnuckleSandwich.Gameplay
                 new StompCollisionSystem(),
                 new BumpbackSystem(),
                 new GravitySystem(),
-                new BoundarySystem()
+                new BoundarySystem(),
+
+                // Misc
+                new WinSystem()
             };
 
             systems.ToList().ForEach(x => AddEntityProcessor(x));

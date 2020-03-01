@@ -29,6 +29,7 @@ namespace KnuckleSandwich.Gameplay.Systems
                     if (isBeingStompedOn(selfCollider, otherBoxCollider))
                     {
                         entity.Destroy();
+                        otherCollider.Entity.AddComponent(new Winner());
                     }
 
                     else if (!isStomping(selfCollider, otherBoxCollider)

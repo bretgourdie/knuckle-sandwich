@@ -23,6 +23,8 @@ namespace Nez
 			public static class Gameplay
 			{
 				public const string Background = @"Sprites\Gameplay\Background";
+				public const string Win1 = @"Sprites\Gameplay\Win1";
+				public const string Win2 = @"Sprites\Gameplay\Win2";
 			}
 
 		}

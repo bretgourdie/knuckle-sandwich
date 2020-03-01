@@ -59,9 +59,12 @@
     <Compile Include="Gameplay\Components\FighterStates\Jump.cs" />
     <Compile Include="Gameplay\Components\FighterStates\Walk.cs" />
     <Compile Include="Gameplay\Components\SpritePointing.cs" />
+    <Compile Include="Gameplay\Components\Winner.cs" />
     <Compile Include="Gameplay\Entities\Background.cs" />
     <Compile Include="Gameplay\Components\FighterComponent.cs" />
     <Compile Include="Gameplay\Entities\SpritePointer.cs" />
+    <Compile Include="Gameplay\Entities\Win1.cs" />
+    <Compile Include="Gameplay\Entities\Win2.cs" />
     <Compile Include="Gameplay\Systems\BoundarySystem.cs" />
     <Compile Include="Gameplay\Systems\BumpbackSystem.cs" />
     <Compile Include="Gameplay\Systems\FacingSystem.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Gameplay\Systems\FighterStateSystems\WalkSystem.cs" />
     <Compile Include="Gameplay\Systems\FighterStateSystems\GravitySystem.cs" />
     <Compile Include="Gameplay\Systems\StompCollisionSystem.cs" />
+    <Compile Include="Gameplay\Systems\WinSystem.cs" />
     <Compile Include="Shared\Constants.cs" />
     <Compile Include="Shared\Entities\WhiteBread.cs" />
     <Compile Include="Game1.cs" />
