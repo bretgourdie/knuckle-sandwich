@@ -32,7 +32,7 @@ namespace KnuckleSandwich.Gameplay.Systems
 
             celebration.SetPosition(new Vector2(
                 Constants.Width / 2,
-                Constants.Height / 4));
+                Constants.Height / 8));
 
             entity.RemoveComponent<Winner>();
         }
